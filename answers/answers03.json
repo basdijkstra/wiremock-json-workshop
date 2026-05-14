@@ -1,0 +1,42 @@
+{
+  "mappings": [
+    {
+      "scenarioName": "Loan processing",
+      "requiredScenarioState": "Started",
+      "request": {
+        "method": "GET",
+        "url": "/loans/12345"
+      },
+      "response": {
+        "status": 404
+      }
+    },
+    {
+      "scenarioName": "Loan processing",
+      "requiredScenarioState": "Started",
+      "newScenarioState": "LOAN_GRANTED",
+      "request": {
+        "method": "POST",
+        "url": "/loans",
+        "bodyPatterns": [
+          { "equalTo": "Loan ID: 12345" }
+        ]
+      },
+      "response": {
+        "status": 201
+      }
+    },
+    {
+      "scenarioName": "Loan processing",
+      "requiredScenarioState": "LOAN_GRANTED",
+      "request": {
+        "method": "GET",
+        "url": "/loans/12345"
+      },
+      "response": {
+        "status": 200,
+        "body": "Loan ID: 12345"
+      }
+    }
+  ]
+}

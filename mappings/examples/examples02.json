@@ -1,0 +1,112 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/urlmatching"
+      },
+      "response": {
+        "status": 200,
+        "body": "URL matching"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "headers": {
+          "Content-Type": {
+            "contains": "application/json"
+          },
+          "DoesntExist": {
+            "absent": true
+          }
+        },
+        "url": "/headermatching"
+      },
+      "response": {
+        "status": 200,
+        "body": "Header matching"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "cookies": {
+          "my_cookie": {
+            "equalTo": "my_cookie_value"
+          }
+        },
+        "url": "/cookiematching"
+      },
+      "response": {
+        "status": 200,
+        "body": "Cookie matching"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "headers": {
+          "my_header": {
+            "and": [
+              {
+                "matches": "[a-z]+"
+              },
+              {
+                "contains": "somevalue"
+              }
+            ]
+          }
+        },
+        "url": "/logical-and-or-matching"
+      },
+      "response": {
+        "status": 200,
+        "body": "Logical AND and OR matching"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$.fruits[?(@.banana=='2')]"
+          }
+        ],
+        "url": "/jsonbodymatching"
+      },
+      "response": {
+        "status": 200,
+        "body": "JSON body matching"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/error-status-code"
+      },
+      "response": {
+        "status": 500
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/delay"
+      },
+      "response": {
+        "status": 500,
+        "fixedDelayMilliseconds": 5000
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "/fault-response"
+      },
+      "response": {
+        "fault": "MALFORMED_RESPONSE_CHUNK"
+      }
+    }
+  ]
+}

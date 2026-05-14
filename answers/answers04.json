@@ -1,0 +1,24 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/echo-port"
+      },
+      "response": {
+        "status": 200,
+        "body": "Listening on port {{request.port}}"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/customers/([0-9]{5})"
+      },
+      "response": {
+        "status": 200,
+        "body": "Hello, customer {{request.pathSegments.[1]}}"
+      }
+    }
+  ]
+}

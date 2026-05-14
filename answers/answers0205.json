@@ -1,0 +1,19 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "bodyPatterns": [
+          {
+            "matchesJsonPath": "$.loanDetails[?(@.amount == '1000')]"
+          }
+        ],
+        "url": "/requestLoan0205"
+      },
+      "response": {
+        "status": 200,
+        "body": "Loan application approved"
+      }
+    }
+  ]
+}

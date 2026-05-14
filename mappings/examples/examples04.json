@@ -1,0 +1,24 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "ANY",
+        "url": "/template-http-method"
+      },
+      "response": {
+        "status": 200,
+        "body": "You used an HTTP {{request.method}}"
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/template-json-body"
+      },
+      "response": {
+        "status": 200,
+        "body": "{{jsonPath request.body '$.book.title'}} is an awesome book"
+      }
+    }
+  ]
+}

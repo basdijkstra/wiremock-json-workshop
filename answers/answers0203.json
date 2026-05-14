@@ -1,0 +1,18 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "cookies": {
+          "session": {
+            "equalTo": "invalid"
+          }
+        },
+        "url": "/requestLoan0203"
+      },
+      "response": {
+        "fault": "RANDOM_DATA_THEN_CLOSE"
+      }
+    }
+  ]
+}

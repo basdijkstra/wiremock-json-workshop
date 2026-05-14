@@ -1,0 +1,19 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "headers": {
+          "speed": {
+            "equalTo": "slow"
+          }
+        },
+        "url": "/requestLoan0202"
+      },
+      "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 3000
+      }
+    }
+  ]
+}

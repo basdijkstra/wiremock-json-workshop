@@ -1,0 +1,25 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "or": [
+              {
+                "equalTo": "Bearer invalid"
+              },
+              {
+                "absent": true
+              }
+            ]
+          }
+        },
+        "url": "/requestLoan0204"
+      },
+      "response": {
+        "status": 401
+      }
+    }
+  ]
+}
