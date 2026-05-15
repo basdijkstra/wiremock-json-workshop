@@ -1,0 +1,784 @@
+{
+  "info": {
+    "_postman_id": "e6b4d492-8312-40ad-bb97-ac4b45659d25",
+    "name": "WireMock workshop",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "598323"
+  },
+  "item": [
+    {
+      "name": "Examples",
+      "item": [
+        {
+          "name": "Examples 01",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9876/helloworld",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "helloworld"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Examples 03",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Cancel newspaper subscription",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/todo/items",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "todo",
+                "items"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Examples 04-01",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "Cancel newspaper subscription"
+            },
+            "url": {
+              "raw": "http://localhost:9876/template-http-method",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "template-http-method"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Examples 04-02",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"book\": {\r\n        \"author\": \"Ken Follett\",\r\n        \"title\": \"Pillars of the Earth\",\r\n        \"published\": 1989\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/template-json-body",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "template-json-body"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Exercises",
+      "item": [
+        {
+          "name": "Exercises 01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Content-Type is text/plain\", function () {\r",
+                  "    pm.response.to.have.header(\"Content-Type\", \"text/plain\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body is correct\", function () {\r",
+                  "    pm.response.to.have.body(\"Loan application received!\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 503\", function () {\r",
+                  "    pm.response.to.have.status(503);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0201",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0201"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-02",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is more than 3000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.above(3000);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "speed",
+                "value": "slow",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0202",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0202"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-03",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is more than 3000ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.above(3000);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0203",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0203"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-04 test 01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\r",
+                  "    pm.response.to.have.status(401);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "invalid",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0204",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0204"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-04 test 02",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 401\", function () {\r",
+                  "    pm.response.to.have.status(401);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0204",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0204"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-04 test 03",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "valid",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0204",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0204"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-05 test 01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body is correct\", function () {\r",
+                  "    pm.response.to.have.body(\"Loan application approved\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "valid",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"loanDetails\": {\r\n        \"amount\": 1000\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0205",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0205"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 02-05 test 02",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "valid",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"loanDetails\": {\r\n        \"amount\": 500\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/requestLoan0205",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "requestLoan0205"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 03 test 01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:9876/loans/12345",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "loans",
+                "12345"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 03 test 02",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {\r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Loan ID: 12345",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/loans",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "loans"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 03 test 03",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body is correct\", function () {\r",
+                  "    pm.response.to.have.body(\"Loan ID: 12345\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "session=invalid",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "Loan ID: 12345",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9876/loans/12345",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "loans",
+                "12345"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 04-01",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body is correct\", function () {\r",
+                  "    pm.response.to.have.body(\"Listening on port 9876\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9876/echo-port",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "echo-port"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Exercises 04-02",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Body is correct\", function () {\r",
+                  "    pm.response.to.have.body(\"Hello, customer 34577\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9876/customers/34577",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9876",
+              "path": [
+                "customers",
+                "34577"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+Exercise 04-01
+/************************************************
+ * Create a stub that responds to all GET requests
+ * to /echo-port with HTTP status code 200 and a
+ * response body containing the text
+ * "Listening on port <portnumber>", where <portnumber>
+ * is replaced with the actual port number
+ * (9876, in this case) using response templating.
+ ************************************************/
+
+Exercise 04-02
+/************************************************
+ * Create a stub that listens at path /customers/<customerId>
+ * Use urlPathPattern to do so, valid customer IDs are exactly
+ * five digits long, i.e., matching ([0-9]{5}), and responds to all
+ * GET requests with HTTP status code 200 and a response body containing
+ * the text 'Hello, customer <customerId>',
+ * where <customerId> is the value of the path parameter
+ * extracted from the endpoint
+ ************************************************/
