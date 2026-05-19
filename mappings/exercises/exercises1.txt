@@ -8,7 +8,7 @@ Exercise 102:
 /************************************************
  * Create a stub that will respond to a POST
  * to /requestLoan with a response that contains
- * a Content-Type header with value application/json
+ * a Content-Type header with value text/plain
  ************************************************/
 
 Exercise 103:
